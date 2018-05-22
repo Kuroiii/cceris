@@ -17,8 +17,10 @@ Custom client
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
 | token | `string`  | - The bot's oauth token | &nbsp; |
-| CCoptions | `Object`  | - The commandClient options | &nbsp; |
-| botOptions | `Object`  | - The customClient options | &nbsp; |
+| CCoptions | `Object`  | - The commandClient options | *Optional* |
+| botOptions | `Object`  | - The customClient options | *Optional* |
+| botOptions.listeners | `string`  | - The folder where all the event listeners are located | *Optional* |
+| botOptions.commands | `string`  | - The folder where all the commands are located | *Optional* |
 
 
 
@@ -26,7 +28,7 @@ Custom client
 ##### Returns
 
 
-- `Client`
+- `CLIENT`
 
 
 
@@ -46,7 +48,7 @@ Establish the connection to discord's API
 
 
 
-#### log(message, prefix) 
+#### log(message[, prefix]) 
 
 Custom client logger
 
@@ -58,7 +60,7 @@ Custom client logger
 | Name | Type | Description |  |
 | ---- | ---- | ----------- | -------- |
 | message | `string`  | - The message to be sent | &nbsp; |
-| prefix | `string`  | - The message's prefix | &nbsp; |
+| prefix | `string`  | - The message's prefix | *Optional* |
 
 
 
@@ -90,6 +92,8 @@ Custom client error logger
 
 
 - `string`  message
+
+
 
 
 
