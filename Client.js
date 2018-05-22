@@ -3,6 +3,13 @@ const fs = require('fs')
 const path = require('path')
 const term = require('terminal-kit').terminal
 const chalk = require('chalk')
+ /**
+ * Custom client
+ * @constructor
+ * @param {string} token - The bot's oauth tokeb
+ * @param {Object} CCoptions - The commandClient options
+ * @param {Object} botOptions - The customClient options
+ */
 module.exports = class PokeBot extends CommandClient {
   constructor (token, CCoptions, botOptions) {
     super(botOptions)
@@ -15,12 +22,22 @@ module.exports = class PokeBot extends CommandClient {
     if (this.botOptions.listeners) this.loadEvents(this.botOptions.listeners)
     if (this.botOptions.commands) this.loadCommands(this.botOptions.commands)
   }
+ /**
+ * Establish the connection to discord's API
+ * @return {Object} data - The bot's data
+ */
   login () {
     const token = this.token
     term.clear()
     if (!token) process.exit()
     return super.connect()
   }
+ /**
+ * Custom client logger
+ * @param {string} message - The message to be sent
+ * @param {string} prefix - The message's prefix
+ * @return {string} message
+ */
   log (...args) {
     const d = new Date()
     const message = args[0]
@@ -28,6 +45,11 @@ module.exports = class PokeBot extends CommandClient {
     const time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
     console.log(chalk.yellow(time), chalk.cyan(...tags), message)
   }
+ /**
+ * Custom client error logger
+ * @param {string} message - The error message to be sent to the console
+ * @return {string} message
+ */
   logError (err) {
     console.log(chalk.bgRed(err))
   }
